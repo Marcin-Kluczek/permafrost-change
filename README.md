@@ -11,7 +11,9 @@ Focusing on changes in permafrost active layer thickness in the Arctic holds sig
 
 
 ## Methods
-Permafrost active layer thickness for the Northern Hemisphere (v3.0) was obtained via an FTP server from the [CEDA archive](https://catalogue.ceda.ac.uk/uuid/67a3f8c8dc914ef99f7f08eb0d997e23) in NetCDF4 format [WinSCP](https://winscp.net/eng/index.php?) software. The data processing procedure was carried out in R. The data were read from netcdf4 and then each year was exported to a separate raster, the rasters were then combined into a common layer stack. Using the polygon with the Arctic region (The Arctic Circle), the polar areas were extracted, the values read from each layer and the pixels averaged to individual years. The final step was to export a csv table with Active Layer Thickness for the years 1997-2019.
+Permafrost active layer thickness for the Northern Hemisphere (v3.0) was obtained via an FTP server from the [CEDA archive](https://catalogue.ceda.ac.uk/uuid/67a3f8c8dc914ef99f7f08eb0d997e23) in NetCDF4 format [WinSCP](https://winscp.net/eng/index.php?) software. The data processing procedure was carried out in [R language](https://www.r-project.org/). The data were read from NetCDF and then each year was exported to a separate raster, the rasters were then combined into a common layer stack. Using the polygon with the Arctic region (The Arctic Circle), the polar areas were extracted, the values read from each layer and the pixels averaged to individual years. The final step was to export a csv table with Active Layer Thickness for the years 1997-2019. The data was smoothed with the LOESS algorithm and plotted into a graph which was exported to SVG, where the final graphic effect was given in [Inkscape](https://inkscape.org/) software.
+
+<ins>All procedures were carried out in open source software.</ins>
 
 ## Dataset used
 ESA Permafrost Climate Change Initiative (Permafrost_cci): Permafrost active layer thickness for the Northern Hemisphere, v3.0
@@ -27,4 +29,4 @@ Obu, J.; Westermann, S.; Barboux, C.; Bartsch, A.; Delaloye, R.; Grosse, G.; Hei
 
 by Marcin Kluczek, 2023
 
-#ESAlittlePic #climatechange #ESA #European Space Agency
+#ESAlittlePic #climatechange #ESA #EuropeanSpaceAgency #permafrost #Arctic #R
