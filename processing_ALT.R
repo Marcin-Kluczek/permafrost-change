@@ -139,18 +139,20 @@ write.csv2(df, file = "swvl2.csv", row.names = FALSE)
 
 # Raster preprocessing ----------------------------------------------------
 
-temp = list.files(pattern="*.tif$")
+temp <- list.files(pattern="*.tif$")
 str(temp)
-lista <- list()
+
+images_list <- list()
 for (i in 1:length(temp)){
-  obraz <- raster::brick(temp[i])
-  lista[[i]] <- obraz
+  image <- raster::brick(temp[i])
+  images_list[[i]] <- image
 }
 
-obraz <- stack(lista)
-obraz <- stack(obraz, srtm)
-writeRaster(obraz, file = paste0("STACK-S2-SRTM-",year ),
-            datatype='FLT4S', format="GTiff", overwrite=FALSE, progress = "text")
+stacked_image <- stack(images_list)
+
+writeRaster(stacked_image, file = "STACK_PERMAFROST_1997_2019.tif", 
+            datatype='FLT4S', format="GTiff",
+            overwrite=FALSE, progress = "text")
 
 
 
