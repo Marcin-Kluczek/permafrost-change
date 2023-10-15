@@ -6,7 +6,8 @@ Focusing on changes in permafrost active layer thickness in the Arctic holds sig
 
 ## Little picture
 ### Changes in Arctic Permafrost Active Layer Thickness: 1997-2019
-![final_Kluczek](https://github.com/Marcin-Kluczek/permafrost-change/assets/64478068/41c4d180-a45a-42f8-aca9-94963f40f6fa)
+![final_Kluczek](https://github.com/Marcin-Kluczek/permafrost-change/assets/64478068/956935f8-ecc8-4651-9087-03888b8846d5)
+
 
 In the period spanning from 1997 to 2019, the Arctic region experienced discernible shifts in the Active Layer Thickness (ALT) of permafrost, a critical parameter denoting the depth to which the upper layer of perennially frozen ground thaws during the summer months. These changes have profound implications for both regional and global climates, with a direct nexus to anthropogenic climate warming.
 
