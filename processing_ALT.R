@@ -1,4 +1,5 @@
 # NetCDF preprocessing ----------------------------------------------------
+
 library(raster)
 library(rgdal)
 library(sp)
@@ -74,7 +75,6 @@ time <- getNcTime(nc)
 min(time); max(time)
 
 
-
 for (j in 1:length(temp)){
   nc <- ncdf4::nc_open(temp[j])
   
@@ -116,24 +116,32 @@ writeRaster(stacked_image, file = "STACK_PERMAFROST_1997_2019.tif",
             overwrite=FALSE, progress = "text")
 
 
-
 # Raster mean -------------------------------------------------------------
 
-
-library(raster)
-setwd('D:/permafrost-change/')
-
+# read raster stack with years
 image <- raster::brick('STACK_PERMAFROST_1997_2019.tif')
 
+# read polygons with Arctic
+poly <- rgdal::readOGR("arctic_poly.shp")
+
+# Check CRS and crop image by polygon to get Arctic area data
+image <- projectRaster(image, crs = crs(poly))
+image <- crop(image, extent(poly))
+image <- mask(image, poly)
+
+# Prepare list to store data
 outlist <- list() 
+
+# Get number of bands should be same as number of years 1997-2019 
 nbands <- image@file@nbands
 
+# Loop over years and get mean value of ALT for each of year
 for (i in 1:nbands) { 
   outlist[[i]] <- mean(getValues(image[[i]]) ,na.rm=T) 
   print(nbands - i)
 }
 
-
+# Transform values to convenient data frame
 df <- as.data.frame(outlist)
 df <- t(df)
 rownames(df) <- NULL
@@ -141,14 +149,18 @@ df <- as.data.frame(df)
 df$year <- c(1997:2019)
 colnames(df) <- c("ALT", "year")
 
+#Write table of ALT values to csv
 write.csv(df, file = "perfmafost_Arctic_ATL_mean_1997_2019.csv", row.names = FALSE )
 
 df$ALT <- df$ALT * -1 #reverse values for underground visualistation
+
+# Smoothing of time series by LOESS
 loessMod75 <- loess(ALT ~ year, data=df, span=0.75) # 75% smoothing span
 smoothed75 <- predict(loessMod10) 
 
 # Plot --------------------------------------------------------------------
 
+# Plot image and export as SVG
 svg("ALT.svg")
 plot(df$ALT, type = "l", col='blue')
 lines(smoothed75, type = "l",col='green', lwd = 3)
