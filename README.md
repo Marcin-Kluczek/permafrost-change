@@ -28,8 +28,7 @@ Obu, J.; Westermann, S.; Barboux, C.; Bartsch, A.; Delaloye, R.; Grosse, G.; Hei
 
 
 ## Study area - Arctic Circle
-
-![permafrost_arctic_extent](https://github.com/Marcin-Kluczek/permafrost-change/assets/64478068/c0d151e4-5c1e-48fc-8aaf-d8b70ec8ad2a)
+![permafrost_arctic_extent](https://github.com/Marcin-Kluczek/permafrost-change/assets/64478068/e2d6ca9d-517c-432a-960b-0e728a8f6d06)
 
 
 
