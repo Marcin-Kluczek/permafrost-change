@@ -156,7 +156,7 @@ df$ALT <- df$ALT * -1 #reverse values for underground visualistation
 
 # Smoothing of time series by LOESS
 loessMod75 <- loess(ALT ~ year, data=df, span=0.75) # 75% smoothing span
-smoothed75 <- predict(loessMod10) 
+smoothed75 <- predict(loessMod75) 
 
 # Plot --------------------------------------------------------------------
 
